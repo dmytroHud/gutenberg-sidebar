@@ -66,4 +66,14 @@ class MetaboxView {
 	protected static function renderLabel($name, $settings) {
 		return sprintf('<input type="text" name="%s" value="%s" />', $name, $settings['value']);
 	}
+
+	public static function getConditionForItem($config) {
+		$output = '';
+		if(isset($config['condition'])) {
+			$field = array_key_first($config['condition']);
+			$value = implode(',', $config['condition'][$field]);
+			$output = ' data-field="' . $field . '" data-value="' . $value . '"';
+		}
+		return $output;
+	}
 }

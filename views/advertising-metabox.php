@@ -7,14 +7,7 @@ use GutenbergSidebar\views\MetaboxView; ?>
 
 <div class="gs-options">
 	<?php foreach ($fields as $key => $config):
-		if(isset($config['condition'])) {
-			$field = array_key_first($config['condition']);
-			$value = implode(',', $config['condition'][$field]);
-			$output = ' data-field="' . $field . '" data-value="' . $value . '"';
-		}
-		else {
-			$output = '';
-		}
+		$output = MetaboxView::getConditionForItem($config);
 		$show = !$config['show'] ? 'style="display: none;"' : ''; ?>
         <div class="gs-option" <?php echo $show, $output; ?> id="<?php echo $key; ?>">
             <div class="gs-option-label">

@@ -72,7 +72,7 @@ class Post extends PostType {
 
 	public function getMetaValue($name) {
 		$current_value = $this->getPostMeta($name);
-		$default_value = static::$metaFields[$name]['value'];
+		$default_value = static::$metaFields[$name]['value'] ?? '';
 
 		if($current_value !== '' && $current_value != $default_value){
 		    return $current_value;
